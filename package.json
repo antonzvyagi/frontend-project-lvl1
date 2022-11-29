@@ -1,6 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
+  "type": "module",
   "description": "Hexlet frontend project lvl1 'Brain Games'",
   "main": "bin/brain-games.js",
   "scripts": {
