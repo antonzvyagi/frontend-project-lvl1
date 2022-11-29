@@ -1,0 +1,20 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Hexlet frontend project lvl1 'Brain Games'",
+  "main": "bin/brain-games.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bin/brain-games.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonzvyagi/frontend-project-lvl1.git"
+  },
+  "author": "Anton Zvyagintsev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antonzvyagi/frontend-project-lvl1/issues"
+  },
+  "homepage": "https://github.com/antonzvyagi/frontend-project-lvl1#readme"
+}
