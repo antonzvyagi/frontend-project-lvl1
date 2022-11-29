@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Hexlet frontend project lvl1 'Brain Games'",
-  "main": "bin/brain-games.js",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node bin/brain-games.js"
