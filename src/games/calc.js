@@ -1,51 +1,35 @@
-import { question } from "readline-sync";
+const OPERATORS = ['+', '-', '*'];
 
-const START_MESSAGE = 'What is the result of the expression?';
-const ROUNDS = 3;
-
-const playGameRounds = () => {
-    let round = 1;
-    while (round <= ROUNDS) {
-        const q = getQuestion();
-        console.log(q.toString());
-        const answer = question(`Your answer: `);
-
-        const correct = answer === q.answer;
-
-        if (!correct) {
-            console.log(getFailMessage(q, answer));
-            return false;
-        }
-        console.log('Correct!')
-        round += 1;
-    }
-    return true;
+const getOperator = () => {
+    const index = Math.floor(OPERATORS.length * Math.random());
+    return OPERATORS[index];
 }
 
-const getFailMessage = (q, answer) => {
-    return `'${answer}' is wrong answer ;(. Correct answer was '${q.answer}'.`;
+const getRandomNumber = () => Math.floor(100 * Math.random());
+const getOperands = () => {
+    return [getRandomNumber(), getRandomNumber()];
 }
-
-const getResultMessage = (result, username) => {
-    return result ? `Congratulations, ${username}!` : `Let's try again, ${username}!`;
-}
-
-const getNumber = () => Math.floor(100 * Math.random());
-const isEven = (number) => number % 2 === 0;
-
-const getQuestion = () => {
-    const number = getNumber();
-    return {
-        value: number,
-        answer: isEven(number) ? 'yes' : 'no',
-        toString() {
-            return `Question: ${number}`
-        }
+const getExpressionResult = (operator, operands) => {
+    switch (operator) {
+        case '+': return operands[0] + operands[1];
+        case '-': return operands[0] - operands[1];
+        case '*': return operands[0] * operands[1];
+        default: throw new Error('operator not supported')
     }
 }
 
-export default (username) => {
-    console.log(START_MESSAGE);
-    const result = playGameRounds();
-    console.log(getResultMessage(result, username));
+export const game = {
+    getQuestion() {
+        const operator = getOperator();
+        const operands = getOperands();
+        return {
+            question: `${operands[0]} ${operator} ${operands[1]}`,
+            correctAnswer: getExpressionResult(operator, operands).toString()
+        }
+    },
+    getWelcomeMessage() {
+        return 'What is the result of the expression?'
+    }
 }
+
+export default game;
